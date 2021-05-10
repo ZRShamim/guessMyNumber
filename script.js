@@ -1,7 +1,7 @@
 'use strict';
 
-let secretNumber = Math.trunc(Math.random() * 20) + 1;
-let score = 20;
+let secretNumber = Math.trunc(Math.random() * 30) + 1;
+let score = 10;
 let highscore = 0;
 
 const displayMessage = (message, image) => {
@@ -23,11 +23,11 @@ document.querySelector('.check').addEventListener('click', function () {
   const guess = Number(document.querySelector('.guess').value);
 
   //No input
-  if (!guess) {
-    displayMessage('No Number 😒');
-
-    // Winning Condition
-  } else if (guess === secretNumber) {
+  if (!guess || guess < 0 || guess > 30) {
+    displayMessage('Guess Number Between (1-30)😒', 'image/guess.gif');
+  }
+  // Winning Condition
+  else if (guess === secretNumber) {
     displayMessage('Correct Number 🎉', 'image/congo.gif');
 
     styling(secretNumber, '#60b347', '30rem');
@@ -56,9 +56,9 @@ document.querySelector('.check').addEventListener('click', function () {
 });
 
 document.querySelector('.again').addEventListener('click', function () {
-  score = 20;
-  secretNumber = Math.trunc(Math.random() * 20) + 1;
-
+  score = 10;
+  secretNumber = Math.trunc(Math.random() * 30) + 1;
+  console.log(secretNumber);
   setScore(score);
   displayMessage('Start Guessing...', 'image/guess.gif');
   styling('?', '#222', '15rem');
