@@ -58,7 +58,6 @@ document.querySelector('.check').addEventListener('click', function () {
 document.querySelector('.again').addEventListener('click', function () {
   score = 10;
   secretNumber = Math.trunc(Math.random() * 30) + 1;
-  console.log(secretNumber);
   setScore(score);
   displayMessage('Start Guessing...', 'image/guess.gif');
   styling('?', '#222', '15rem');
