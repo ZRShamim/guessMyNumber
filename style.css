@@ -110,8 +110,14 @@ h1 {
 }
 
 .message {
-  margin-bottom: 8rem;
+  margin-bottom: 5rem;
   height: 3rem;
+}
+
+.image {
+  margin-bottom: 3rem;
+  margin-top: 3rem;
+  height: 15rem;
 }
 
 .label-score {

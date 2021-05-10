@@ -4,8 +4,9 @@ let secretNumber = Math.trunc(Math.random() * 20) + 1;
 let score = 20;
 let highscore = 0;
 
-const displayMessage = message => {
+const displayMessage = (message, image) => {
   document.querySelector('.message').textContent = message;
+  document.querySelector('.image').src = image;
 };
 
 const setScore = number => {
@@ -27,7 +28,7 @@ document.querySelector('.check').addEventListener('click', function () {
 
     // Winning Condition
   } else if (guess === secretNumber) {
-    displayMessage('Correct Number 🎉');
+    displayMessage('Correct Number 🎉', 'image/congo.gif');
 
     styling(secretNumber, '#60b347', '30rem');
 
@@ -39,11 +40,16 @@ document.querySelector('.check').addEventListener('click', function () {
     //loosing Condition
   } else if (guess !== secretNumber) {
     if (score > 1) {
-      displayMessage(guess > secretNumber ? 'Too High 📈' : 'Too Low 📉');
+      // displayMessage(guess > secretNumber ? 'Too High 📈' : 'Too Low 📉');
+      if (guess > secretNumber) {
+        displayMessage('Too High 📈', 'image/high.gif');
+      } else {
+        displayMessage('Too Low 📉', 'image/low.gif');
+      }
       score--;
       setScore(score);
     } else {
-      displayMessage('You Loss 💥');
+      displayMessage('You Loss 💥', 'image/loss.gif');
       setScore(0);
     }
   }
@@ -54,7 +60,7 @@ document.querySelector('.again').addEventListener('click', function () {
   secretNumber = Math.trunc(Math.random() * 20) + 1;
 
   setScore(score);
-  displayMessage('Start Guessing...');
+  displayMessage('Start Guessing...', 'image/guess.gif');
   styling('?', '#222', '15rem');
   document.querySelector('.guess').value = '';
 });
